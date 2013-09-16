@@ -1,0 +1,4 @@
+.bundle
+.ruby-version
+*.lock
+vendor/bundle
