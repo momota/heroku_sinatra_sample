@@ -1,23 +1,2 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meata charset="urf-8">
-  <title>BBS</title>
-</head>
-<body>
-  <h1>BBS</h1>
-  <ul>
-    <% @comments.each do |comment| %>
-    <li data-id="<% comment.id %>">
-    <%= comment.body %>
-    </li>
-    <% end %>
-  </ul>
-  <h2>Add new post</h2>
-  <form method="post" action="/new">
-    <input type="textarea" name="body"> <input type="submit" value="post!">
-  </form>
-  </h2>
-
-</body>
-</html>
+  <h1>test</h1>
+  <h2><%= @name%></h2>
