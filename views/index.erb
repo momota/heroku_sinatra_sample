@@ -1,2 +1,28 @@
-  <h1>test</h1>
-  <h2><%= @name%></h2>
+  <h1>sinatra sample</h1>
+  <ul>
+    <% @comments.find.each { |comment| %>
+    <li data-id="<%= comment["_id"]%>">
+      <%= h comment["body"] %>
+      <span class="deleteCmd" style="cursor:pointer; color:blue">[x]</span>
+      </li>
+    <% } %>
+  </ul>
+
+  <h2>Add new</h2>
+  <form method="post" action="new">
+    <input type="text" name="body"> <input type="submit" value="post">
+  </form>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script>
+    $('.deleteCmd').click(function() {
+      var el = $( this ).parent();
+      if(confirm('are you sure to delete ?')) {
+        $.post('/delete', {
+          id: el.data('id')
+          }, function() {
+            el.fadeOut( 800 );
+          });
+      }
+      })
+  </script>

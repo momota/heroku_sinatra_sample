@@ -1,4 +1,6 @@
 .bundle
 .ruby-version
+.DS_Store
 *.lock
+*.swp
 vendor/bundle
