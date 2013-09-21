@@ -1,22 +1,31 @@
-  <h1>sinatra sample</h1>
-  <ul>
+  <table class="table table-striped">
     <% @comments.find.each { |comment| %>
-    <li data-id="<%= comment["_id"]%>">
+    <tr data-id="<%= comment["_id"]%>">
+      <td>
       <%= h comment["body"] %>
-      <span class="deleteCmd" style="cursor:pointer; color:blue">[x]</span>
-      </li>
+        <span class="deleteCmd" style="cursor:pointer;">
+          <i class="glyphicon glyphicon-remove"></i>
+        </span>
+      </td>
+    </tr>
     <% } %>
-  </ul>
+  </table>
 
   <h2>Add new</h2>
   <form method="post" action="new">
-    <input type="text" name="body"> <input type="submit" value="post">
+    <div class="form-group">
+      <label class="control-label" for="comment" >comment</label>
+      <input type="text" name="body" class="form-control" placeholder="your comment">
+    </div>
+    <div class="form-group">
+      <input type="submit" value="post" class="btn btn-primary">
+    </div>
   </form>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script>
     $('.deleteCmd').click(function() {
-      var el = $( this ).parent();
+      var el = $( this ).parent().parent();
       if(confirm('are you sure to delete ?')) {
         $.post('/delete', {
           id: el.data('id')
