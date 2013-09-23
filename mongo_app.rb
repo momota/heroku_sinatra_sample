@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/reloader'
 require 'mongo'
+require 'uri'
 
 # filter
 before do
