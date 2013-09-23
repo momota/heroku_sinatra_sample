@@ -18,7 +18,7 @@ end
 # filter
 before do
   db_con = get_connection
-  @comments = db_con.db('sinatra_sample').collection('comments')
+  @comments = db_con.collection('comments')
 end
 
 #
