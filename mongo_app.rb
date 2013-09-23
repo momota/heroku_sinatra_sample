@@ -4,9 +4,11 @@ require 'mongo'
 
 # filter
 before do
-  db_con = Mongo::Connection.new('localhost', 27017)
-  @db    = db_con.db('sinatra_sample')
-  @comments = @db.collection('comments')
+  db = URI.parse( ENV['MONGOHQ_URL'] )
+  db_name = db.path.gsub(/^\//, '')
+  db_con  = Mongo::Connection.new(db.host, db.port).db(db_name)
+  db_con.authenticate(db.user, db.password) unless (db.user.nil? || db.user.nil?)
+  @comments = db_con.db('sinatra_sample').collection('comments')
 end
 
 #
